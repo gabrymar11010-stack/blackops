@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>ADMIN</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="matrix" id="matrix"></div>
+
+<div class="topbar">
+
+<div class="glitch">ADMIN CONTROL</div>
+
+<a href="/dashboard">DASHBOARD</a>
+
+</div>
+
+<div class="panel">
+
+<h2>REGISTERED USERS</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>USERNAME</th>
+<th>RANK</th>
+<th>DELETE</th>
+</tr>
+
+{% for user in users %}
+
+<tr>
+
+<td>{{ user.id }}</td>
+<td>{{ user.username }}</td>
+<td>{{ user.rank }}</td>
+
+<td>
+<a href="/delete/{{ user.id }}">DELETE</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>BLACK OPS</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="matrix" id="matrix"></div>
+
+<div class="topbar">
+
+<div class="glitch">BLACK OPS TERMINAL</div>
+
+<div>
+{% if is_admin %}
+<a href="/admin">ADMIN</a>
+{% endif %}
+<a href="/logout">LOGOUT</a>
+</div>
+
+</div>
+
+<div class="container">
+
+<div class="panel">
+
+<h2>TERMINAL</h2>
+
+<div id="terminal"></div>
+
+<input id="commandInput" placeholder="ENTER COMMAND">
+
+<h2>AI MODULE</h2>
+
+<input id="aiInput" placeholder="ASK AI">
+
+<button onclick="askAI()">EXECUTE</button>
+
+<div id="aiResponse"></div>
+
+</div>
+
+<div class="panel">
+
+<h2>SYSTEM STATUS</h2>
+
+<p>CPU => {{ stats.cpu }}%</p>
+<p>RAM => {{ stats.ram }}%</p>
+<p>NETWORK => {{ stats.net }} MB/s</p>
+<p>TIME => {{ stats.time }}</p>
+
+<h2>ONLINE USERS</h2>
+
+{% for user in users %}
+<div>[ {{ user }} ]</div>
+{% endfor %}
+
+<h2>GLOBAL CHAT</h2>
+
+<div class="chatbox">
+
+{% for m in messages %}
+
+<div class="msg">
+<b>{{ m.username }}</b>
+<span class="time">{{ m.time }}</span>
+<br>
+{{ m.text }}
+</div>
+
+{% endfor %}
+
+</div>
+
+<form action="/send_message" method="POST">
+
+<input name="text" placeholder="SEND MESSAGE">
+
+<button>SEND</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
